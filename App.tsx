@@ -1,29 +1,46 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import type { RootStackParamList } from './navigation/types';
+import BadPractiseScreen from './screens/BadPractiseScreen';
+import GoodPractiseScreen from './screens/GoodPractiseScreen';
+import HomeScreen from './screens/HomeScreen';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" />
-      <View style={styles.container}>
-        <Text style={styles.title}>Hello</Text>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerBackTitle: 'Back',
+            headerTintColor: '#1C1917',
+            headerStyle: { backgroundColor: '#F7F4EF' },
+            headerShadowVisible: false,
+            contentStyle: { backgroundColor: '#F7F4EF' },
+          }}>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="GoodPractise"
+            component={GoodPractiseScreen}
+            options={{ title: 'Good practise' }}
+          />
+          <Stack.Screen
+            name="BadPractise"
+            component={BadPractiseScreen}
+            options={{ title: 'Bad practise' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F7F4EF',
-  },
-  title: {
-    fontSize: 48,
-    fontWeight: '700',
-    color: '#1C1917',
-  },
-});
 
 export default App;
