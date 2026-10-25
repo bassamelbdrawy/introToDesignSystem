@@ -30,7 +30,7 @@ function App() {
           <Stack.Screen
             name="GoodPractise"
             component={GoodPractiseScreen}
-            options={{ title: 'Good practise' }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="BadPractise"
