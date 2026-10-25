@@ -35,7 +35,7 @@ function App() {
           <Stack.Screen
             name="BadPractise"
             component={BadPractiseScreen}
-            options={{ title: 'Bad practise' }}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>
